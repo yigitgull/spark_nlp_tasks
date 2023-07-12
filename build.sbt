@@ -27,10 +27,10 @@ val sparkNLP = "4.2.7"
 
 libraryDependencies ++= {
   Seq(
-    "org.apache.spark" %% "spark-core" % sparkVer % Provided,
-    "org.apache.spark" %% "spark-mllib" % sparkVer % Provided,
+    "org.apache.spark" %% "spark-core" % sparkVer % Compile,
+    "org.apache.spark" %% "spark-mllib" % sparkVer % Compile,
     "org.scalatest" %% "scalatest" % scalaTestVersion % "test",
-    "com.johnsnowlabs.nlp" %% "spark-nlp" % sparkNLP)
+    "com.johnsnowlabs.nlp" %% "spark-nlp-m1" % "4.2.8")
 }
 
 /** Disables tests in assembly */
@@ -47,11 +47,11 @@ assembly / assemblyMergeStrategy := {
  * If you wish to make a Uber JAR (Fat JAR) without Spark NLP
  * because your environment already has Spark NLP included same as Apache Spark
 **/
-//assemblyExcludedJars in assembly := {
-//  val cp = (fullClasspath in assembly).value
-//  cp filter {
-//    j => {
-//        j.data.getName.startsWith("spark-nlp")
-//    }
-//  }
-//}
+assemblyExcludedJars in assembly := {
+ val cp = (fullClasspath in assembly).value
+  cp filter {
+    j => {
+        j.data.getName.startsWith("spark-nlp")
+    }
+  }
+}
