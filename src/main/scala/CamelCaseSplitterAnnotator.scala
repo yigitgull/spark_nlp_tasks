@@ -87,9 +87,9 @@ class CamelCaseSplitterAnnotator(override val uid: String) extends Transformer w
     val outputColName = getOutputCol
 
     require(schema.fieldNames.contains(inputColName),
-      s"Input column '$inputColName' does not exist in the input schema.")
+      s"Input column '$inputColName' does not exist in the schema.")
     require(!schema.fieldNames.contains(outputColName),
-      s"Output column '$outputColName' exists in the input schema.")
+      s"Output column '$outputColName' exists in the schema.")
 
     val outputColDataType = ArrayType(StringType)
     val outputCol = StructField(outputColName, outputColDataType, nullable = false)

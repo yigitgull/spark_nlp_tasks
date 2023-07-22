@@ -7,7 +7,7 @@ import org.apache.spark.ml.Pipeline
 import org.apache.spark.sql.SparkSession
 
 
-   object AverageEmbeddingsAnnotatorMain extends App {
+   object AverageEmbeddingsAnnotatorTest extends App {
 
      val spark = SparkSession.builder()
        .appName("PunctuationTokenizer")
